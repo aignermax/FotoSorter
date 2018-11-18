@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DayFolderFix\DayFolder.cs" />
+    <Compile Include="DayFolderFix\ImageFolder.cs" />
+    <Compile Include="DayFolderFix\MonthFolder.cs" />
+    <Compile Include="DayFolderFix\YearFolder.cs" />
     <Compile Include="Foto.cs" />
     <Compile Include="FotoList.cs" />
     <Compile Include="Program.cs" />

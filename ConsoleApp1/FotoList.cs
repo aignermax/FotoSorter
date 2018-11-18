@@ -28,12 +28,13 @@ namespace ConsoleApp1
             }
         }
 
-        public void MoveImages()
+        public void MoveImagesToDayFolders()
         {
             CreateFoldersOfImageDates();
             // move images to day folders
             foreach (Foto f in this.Fotos)
             {
+                // DropboxImages\YYYY-MM-DD\
                 File.Move(f.ImgPath, Path.GetDirectoryName(f.ImgPath) + "\\" + f.GetImageDateString() + "\\" + Path.GetFileName(f.ImgPath));
             }
         }

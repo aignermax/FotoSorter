@@ -14,21 +14,39 @@ namespace ConsoleApp1
 
             string FotoDir = @"C:\Users\max_a\Dropbox\Kamera-Uploads"; // args[0];
             Console.WriteLine("Start Sorting Fotos at: " + FotoDir);
+
             // Scan Folder to get all files and put them into a list 
             string[] Images = Directory.GetFiles(FotoDir);
             FotoList myFotoList = new FotoList(Images);
 
+            // Sort All Fotos of a month in a folder (MonthFolder)
+            
             // create Day Folders and insert images of that day into them (get date by IMG Name. if not possible - use changedate)
             Console.WriteLine("Start Moving Fotos" );
-            myFotoList.MoveImages();
+            myFotoList.MoveImagesToDayFolders();
             Console.WriteLine("Moved Fotos");
             // Create Month Folders and move all DayFolders into those
             SortDayFoldersToMonths(FotoDir);
             // create Year Folders and sort all Month folders into those.
             SortMonthsIntoYears(FotoDir);
+
+            // TODO-> At the moment we first simply add all fotos to day-folders and then put them out of them again
+            // Fix Old foto Structure (Where every day had its own fotodir) -> all fotos of a month should be in a dir.
+            FixDayFoldersToMonthSystem(FotoDir);
             Console.ReadLine();
         }
 
+        // Fix old Day-Folders by moving the Image that is in a DayFolder one Folder upwards.
+        // Example WRONG Structure: 2018\2018-02\2018-02-18\image.png
+        // fix that to 2018\2018-02\image.png
+        public static void FixDayFoldersToMonthSystem(string FotoDir)
+        {
+            // search for all Fotos of Subfolders, that are in a Day-Folder
+                // search for YYYY/YYYY-MM/YYYY-MM-DD 
+
+            // ignore Subfolders, that have >= 12 Fotos.
+            // DayFolders that contain less than 12 Fotos will be moved one folder up
+        }
 
         public static void SortDayFoldersToMonths(string FotoDir)
         {
